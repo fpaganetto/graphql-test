@@ -2,13 +2,14 @@
 using ExampleGraphQL.Data;
 using ExampleGraphQL.Models;
 using HotChocolate;
-using Microsoft.AspNetCore.Mvc;
+using HotChocolate.Data;
 
 namespace ExampleGraphQL.GraphQL
 {
     public class Query
     {
-        public IQueryable<Platform> GetPlatform([Service] AppDbContext context)
+        [UseDbContext(typeof(AppDbContext))]
+        public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context)
         {
             return context.Platforms;
         }

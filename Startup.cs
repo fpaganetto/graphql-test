@@ -29,6 +29,7 @@ namespace ExampleGraphQL
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
                 .AddType<PlatformType>()
                 .AddProjections()
                 .AddFiltering()

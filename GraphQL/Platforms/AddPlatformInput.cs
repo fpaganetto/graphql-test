@@ -1,6 +1,4 @@
 ﻿namespace ExampleGraphQL.GraphQL
 {
-    public class AddPlatformInput
-    {
-    }
+    public record AddPlatformInput(string Name);
 }

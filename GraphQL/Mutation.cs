@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ExampleGraphQL.Data;
+using ExampleGraphQL.Models;
 using HotChocolate;
+using HotChocolate.Data;
 
 namespace ExampleGraphQL.GraphQL
 {
     public class Mutation
     {
-/*        public async Task<AddPlatformPayload> AddPlatformAsync(AddPlatformInput input, [ScopedService] AppDbContext context)
+        [UseDbContext(typeof(AppDbContext))]
+        public async Task<AddPlatformPayload> AddPlatformAsync(AddPlatformInput input, [ScopedService] AppDbContext context)
         {
-            var platform = new PlatformID
+            var platform = new Platform
             {
-                Name = input.Name;
-            }
-        }*/
+                Name = input.Name
+            };
+
+            context.Platforms.Add(platform);
+            await context.SaveChangesAsync();
+
+            return new AddPlatformPayload(platform);
+        }
     }
 }

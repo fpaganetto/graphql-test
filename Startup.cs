@@ -1,5 +1,6 @@
 using ExampleGraphQL.Data;
 using ExampleGraphQL.GraphQL;
+using ExampleGraphQL.GraphQL.Platforms;
 using GraphQL.Server.Ui.Voyager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +29,10 @@ namespace ExampleGraphQL
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddProjections();
+                .AddType<PlatformType>()
+                .AddProjections()
+                .AddFiltering()
+                .AddSorting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
